@@ -36,9 +36,9 @@ Rust 语言对自己的定位是取代 C++ 语言。
 
 # Table Of Contents
 
-#### 1. [Rust 语言简介](books/chapter1.md)
+#### 1. [Rust 语言简介](contents/chapter1.md)
 
-#### 2. [Rust 开发环境配置]()
+#### 2. [Rust 开发环境配置](contents/chapter2.md)
 
 #### 3. [Rust Hello World]()
 
