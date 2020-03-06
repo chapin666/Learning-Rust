@@ -42,9 +42,9 @@ Rust 语言对自己的定位是取代 C++ 语言。
 
 #### 3. [Rust Hello World](chapters/chapter3.md)
 
-#### 4. [Rust 数据类型]()
+#### 4. [Rust 数据类型](chapters/chapter4.md)
 
-#### 5. [Rust 变量定义]()
+#### 5. [Rust 变量定义](chapters/chapter5.md)
 
 #### 6. [Rust 常量定义]()
 
