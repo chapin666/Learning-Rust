@@ -11,6 +11,7 @@
 ```
 7 + 5 = 12
 ```
+
 7 和 5 我们称为 运算符加号（ + ） 的操作数，而 12 则运算符操作的结果。
 
 Rust 语言支持以下四种运算符
@@ -43,6 +44,42 @@ Rust 语言支持以下四种运算符
 > 注意
 Rust 语言不支持自增自减运算符 ++ 和 --。
 
+### 范例
+
+下面的范例演示了我们上面提到的所有算术运算符。
+
+```
+fn main() {
+   let num1 = 10 ;
+   let num2 = 2;
+   let mut res:i32;
+
+   res = num1 + num2;
+   println!("Sum: {} ",res);
+
+   res = num1 - num2;
+   println!("Difference: {} ",res) ;
+
+   res = num1*num2 ;
+   println!("Product: {} ",res) ;
+
+   res = num1/num2 ;
+   println!("Quotient: {} ",res);
+
+   res = num1%num2 ;
+   println!("Remainder: {} ",res);
+}
+```
+
+编译运行以上 Rust 代码，输出结果如下
+```
+Sum: 12
+Difference: 8
+Product: 20
+Quotient: 5
+Remainder: 0
+```
+
 ## 关系运算符
 
 关系运算符测试或定义两个实体之间的关系类型。
@@ -66,6 +103,50 @@ Rust 语言不支持自增自减运算符 ++ 和 --。
 |等于|	== 	|如果左操作数等于右操作数则返回 true 否则返回 false |	(A == B) 返回 true|
 |不等于|	!=|	如果左操作数不等于右操作数则返回 true 否则返回 false|	(A != B) 返回 false|
 
+### 范例
+
+下面我们就用一小段代码来演示下上面提到的这些关系运算符的作用和结果
+
+```
+fn main() {
+   let A:i32 = 10;
+   let B:i32 = 20;
+
+   println!("Value of A:{} ",A);
+   println!("Value of B : {} ",B);
+
+   let mut res = A>B ;
+   println!("A greater than B: {} ",res);
+
+   res = A<B ;
+   println!("A lesser than B: {} ",res) ;
+
+   res = A>=B ;
+   println!("A greater than or equal to B: {} ",res);
+
+   res = A<=B;
+   println!("A lesser than or equal to B: {}",res) ;
+
+   res = A==B ;
+   println!("A is equal to B: {}",res) ;
+
+   res = A!=B ;
+   println!("A is not equal to B: {} ",res);
+}
+```
+
+编译运行以上 Rust 代码，输出结果如下
+```
+Value of A:10
+Value of B : 20
+A greater than B: false
+A lesser than B: true
+A greater than or equal to B: false
+A lesser than or equal to B: true
+A is equal to B: false
+A is not equal to B: true
+```
+
 # 逻辑运算符
 
 逻辑运算符用于组合两个或多个条件。
@@ -84,6 +165,38 @@ Rust 语言不支持自增自减运算符 ++ 和 --。
 |逻辑或 | `||`	|两边的条件表达式只要有一个为真则返回 true 否则返回 false|	(A > 10 || B >10) 的结果为 true|
 |逻辑非 |	!	|如果表达式为真则返回 false 否则返回 true|	!(A >10) 的结果为 true|
 
+### 范例
+
+逻辑运算符很简单，因为只有三个。
+
+我们写一小段代码演示下如何使用逻辑运算符以及它们的计算结果。
+```
+fn main() {
+   let a = 20;
+   let b = 30;
+
+   if (a > 10) && (b > 10) {
+      println!("true");
+   }
+   let c = 0;
+   let d = 30;
+
+   if (c>10) || (d>10){
+      println!("true");
+   }
+   let is_elder = false;
+
+   if !is_elder {
+      println!("Not Elder");
+   }
+}
+```
+编译运行以上 Rust 代码，输出结果如下
+```
+true
+true
+Not Elder
+```
 
 ## 位运算符
 
@@ -110,3 +223,42 @@ B 的二进制位格式为
 |位非|	!	把位中的 1 换成 0 ， 0 换成 1|	(!B) 结果 -4|
 |左移|	<<	| 操作数中的所有位向左移动指定位数，右边的位补 0|	(A << 1) 结果为 4 |
 |右移|	>>	| 操作数中的所有位向右移动指定位数，左边的位补 0|	(A >> 1) 结果为 1 |
+
+### 范例
+
+下面的范例演示了我们上面提到的所有位运算符。
+```
+fn main() {
+   let a:i32 = 2;     // 二进制表示为 0 0 0 0 0 0 1 0
+   let b:i32 = 3;     // 二进制表示为 0 0 0 0 0 0 1 1
+
+   let mut result:i32;
+
+   result = a & b;
+   println!("(a & b) => {} ",result);
+
+   result = a | b;
+   println!("(a | b) => {} ",result) ;
+
+   result = a ^ b;
+   println!("(a ^ b) => {} ",result);
+
+   result = !b;
+   println!("(!b) => {} ",result);
+
+   result = a << b;
+   println!("(a << b) => {}",result);
+
+   result = a >> b;
+   println!("(a >> b) => {}",result);
+}
+```
+编译运行以上 Rust 代码，输出结果如下
+```
+(a & b) => 2
+(a | b) => 3
+(a ^ b) => 1
+(!b) => -4
+(a << b) => 16
+(a >> b) => 0
+```
