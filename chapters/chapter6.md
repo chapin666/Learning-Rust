@@ -7,6 +7,7 @@ Rust 语言中使用 const 关键字来定义一个常量。定义常量时需�
 ## 定义常量的语法
 
 Rust 中定义常量的语法格式如下
+
 ```
 const VARIABLE_NAME:dataType = value;
 ```
@@ -65,7 +66,9 @@ fn main() {
    println!("salary 变量的值为:{}",salary);
 }
 ```
+
 编译运行以上 Rust 代码，输出结果如下
+
 ```
 salary 变量的值为:1.5
 ```
@@ -79,6 +82,7 @@ salary 变量的值为:1.5
 Rust 支持在同一个作用域/内层作用域内定义多个同名变量，而且每个同名变量的类型还可以不一样。
 
 我们使用一个简单的范例来演示下 同名变量可以有不同的数据类型
+
 ```
 fn main() {
    let uname = "Mohtashim";
@@ -86,7 +90,9 @@ fn main() {
    println!("uname 字符串的字符数是: {}",uname);
 }
 ```
+
 编译运行以上 Rust 代码，输出结果如下
+
 ```
 uname 字符串的字符数是:: 9
 ```
@@ -106,6 +112,7 @@ uname 字符串的字符数是:: 9
 ### 范例
 
 我们将上面的范例改造下，使用 const 关键字来定义同名的常量
+
 ```
 fn main() {
    const NAME:&str = "Mohtashim";
