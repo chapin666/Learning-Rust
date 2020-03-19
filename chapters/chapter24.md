@@ -1,4 +1,4 @@
-# Rust 文件读写
+# 二十四、Rust 文件读写
 
 Rust 标准库提供了大量的模块和方法用于读写文件。
 
@@ -19,7 +19,7 @@ Rust 语言使用结构体 **File** 来描述/展现一个文件。
 |std::io::Writes|	write_all() / fn write_all(&mut self, buf: &[u8]) -> Result<()> |	将 buf 中的所有内容写入输出流 |
 |std::io::Read|	read_to_string() / fn read_to_string(&mut self, buf: &mut String) -> Result |	读取所有内容转换为字符串后追加到 buf 中|
 
-## Rust 打开文件
+## 24.1 Rust 打开文件
 
 Rust 标准库中的 std::fs::File 模块提供了静态方法 open() 用于打开一个文件并返回文件句柄。
 
@@ -31,7 +31,7 @@ pub fn open(path: P) -> Result
 
 open() 函数用于以只读模式打开一个已经存在的文件，如果文件不存在，则会抛出一个错误。如果文件不可读，那么也会抛出一个错误。
 
-### 范例
+### 24.1.1 范例
 
 下面的范例，我们使用 open() 打开当前目录下的文件，已经文件已经存在，所以不会抛出任何错误
 
@@ -54,7 +54,7 @@ thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: Os { cod
 note: Run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
 ```
 
-## Rust 创建文件
+## 24.2 Rust 创建文件
 
 Rust 标准库中的 std::fs::File 模块提供了静态方法 create() 用于创建一个文件并返回创建的文件句柄。
 
@@ -66,7 +66,7 @@ pub fn create(path: P) -> Result
 
 create() 函数用于创建一个文件并返回创建的文件句柄。如果文件已经存在，则会内部调用 open() 打开文件。如果创建失败，比如目录不可写，则会抛出错误
 
-### 范例
+### 24.2.1 范例
 
 下面的代码，使用 create() 函数创建文件 data.txt。
 
@@ -83,7 +83,7 @@ fn main() {
 文件创建成功:File { fd: 3, path: "/Users/Admin/Downloads/guess-game-app/src/data.txt", read: false, write: true }
 ```
 
-## Rust 写入文件
+## 24.3 Rust 写入文件
 
 Rust 语言标准库 std::io::Writes 提供了函数 write_all() 用于向输出流写入内容。
 
@@ -97,7 +97,7 @@ fn write_all(&mut self, buf: &[u8]) -> Result<()>
 
 write_all() 用于向当前流写入 buf 中的内容。如果写入成功则返回写入的字节数，如果写入失败则抛出错误
 
-### 范例
+### 24.3.1 范例
 
 下面的代码，我们使用 write_all() 方法向文件 data.txt 写入一些内容
 
@@ -120,7 +120,7 @@ fn main() {
 
 > 注意： write_all() 方法并不会在写入结束后自动写入换行符 \n。
 
-## Rust 读取文件
+## 24.4 Rust 读取文件
 
 Rust 读取内容的一般步骤为:
 
@@ -139,7 +139,7 @@ fn read_to_string(&mut self, buf: &mut String) -> Result
 
 read_to_string() 函数用于读取文件中的所有内容并追加到 buf 中，如果读取成功则返回读取的字节数，如果读取失败则抛出错误。
 
-### 范例
+### 24.4.1 范例
 
 我们首先在当前目录下新建一个文件 data.txt 并写入以下内容
 
@@ -168,7 +168,7 @@ fn main(){
 简单编程
 ```
 
-## 追加内容到文件末尾
+## 24.5 追加内容到文件末尾
 
 Rust 核心和标准库并没有提供直接的函数用于追加内容到文件的末尾。
 
@@ -182,7 +182,7 @@ Rust 核心和标准库并没有提供直接的函数用于追加内容到文件
 pub fn append(&mut self, append: bool) -> &mut OpenOptions
 ```
 
-### 范例
+### 24.5.1 范例
 
 下面的范例，我们使用 append() 方法修改文件的打开模式为 追加。
 
@@ -215,7 +215,7 @@ fn main() {
 简单编程
 ```
 
-## Rust 删除文件
+## 24.6 Rust 删除文件
 
 Rust 标准库 std::fs 提供了函数 remove_file() 用于删除文件。
 
@@ -226,7 +226,7 @@ pub fn remove_file<P: AsRef>(path: P) -> Result<()>
 ```
 > 注意，删除可能会失败，即使返回结果为 OK，也有可能不会立即就删除。
 
-### 范例
+### 24.6.1 范例
 
 下面的代码，我们使用 remove_file() 方法删除 data.txt。
 
@@ -247,7 +247,7 @@ file is removed
 ```
 打开当前目录，我们可以发现文件已经被删除了。
 
-## Rust 复制文件
+## 24.7 Rust 复制文件
 
 Rust 标准库没有提供任何函数用于复制一个文件为另一个新文件。
 

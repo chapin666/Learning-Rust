@@ -1,4 +1,4 @@
-# Rust 借用 Borrowing
+# 十五、Rust 借用 Borrowing
 
 上一章节我们学习了 **所有权 （ ownership ）** 这个改变，知道了在 **堆（ heap ）**上分配的变量都有所有权。
 
@@ -51,7 +51,7 @@ error: aborting due to previous error
 
 重复的讲解这个例子，并不是为了凑字数，而是我们会有一种更好的解决方案，这个方案只要修改一点点就能让程序运行。
 
-## 什么是借用 Borrowing ?
+## 15.1 什么是借用 Borrowing ?
 
 借用 Borrowing 或者说 出借 应该不用我再详细解释了吧，很简单的，就是 临时性的把东西借给别人，当别人用完了之后就要还回来。
 
@@ -90,7 +90,7 @@ Inside print_vector function [10, 20, 30]
 Printing the value from main() v[0] = 10
 ```
 
-## 可变引用
+## 15.2 可变引用
 
 借用 Borrowing 或者说引用默认情况下是只读的，也就是我们不能修改引用的的变量的值。
 
@@ -188,7 +188,7 @@ error: aborting due to previous error
 ```
 > 注意: 可变引用只能操作可变变量
 
-### 范例：字符串的可变引用
+### 15.2.1 范例：字符串的可变引用
 
 上面的范例，我们操作的是基础的数据类型，如果是堆上分配的变量又会怎么样呢 ？ 比如字符串。
 

@@ -1,4 +1,4 @@
-# Rust 错误处理
+# 二十一、Rust 错误处理
 
 人人都会犯错，编程业务不例外。
 
@@ -30,7 +30,7 @@ Rust 语言遇到可恢复错误时会返回一个 **Result<T, E>** 的枚举。
 
 > panic!() 宏或导致程序立即退出。
 
-## panic!() 宏和不可恢复错误
+## 21.1 panic!() 宏和不可恢复错误
 
 panic!() 会导致程序立即退出，并在退出时向它的调用者反馈退出原因。
 
@@ -48,7 +48,7 @@ panic!( string_error_msg )
 
 > panic!() 不要乱用，除非遇到不可挽救的错误。
 
-### 范例
+### 21.1.1 范例1
 
 下面的范例，因为 panic!() 会导致程序立即退出，所以后面的 println!() 宏就不会运行。
 
@@ -65,7 +65,7 @@ fn main() {
 thread 'main' panicked at 'Hello', main.rs:3
 ```
 
-### 范例2: 数组越界错误
+### 21.1.2 范例2: 数组越界错误
 
 下面的代码，因为数组的最大下标是 2 ，远远小于 10，因此会触发数组越界错误。
 
@@ -91,7 +91,7 @@ is 3 but the index is 10', main.rs:4
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 ```
 
-### 范例 3 ：手动出发 panic!() 让程序退出
+### 21.1.3 范例 3 ：手动出发 panic!() 让程序退出
 
 如果程序执行过程中违反了既定的业务规则，可以手动调用 panic!() 宏让程序退出。
 
@@ -117,7 +117,7 @@ thread 'main' panicked at 'NOT_AN_EVEN', main.rs:9
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 ```
 
-## Result 枚举和可恢复错误
+## 21.2 Result 枚举和可恢复错误
 
 一些比较古老的语言，比如 C 通过设置全局变量 errno 来告诉程序发生了什么错误，而其它的语言，比如 Java 在返回类型的基础上还要通过指定可捕捉的异常来达到程序可恢复的目的，而比较现代的语言，比如 Go 则是通过将错误和正常值一起返回来达到可恢复的目的。
 
@@ -141,7 +141,7 @@ T 和 E 则是两个范型参数：
 - T 用于当 Result 的值为 OK 时作为正常返回的值的数据类型。
 - E 用于当 Result 的值为 Err 时作为错误返回的错误的类型。
 
-### 范例：Result 枚举的简单使用
+### 21.2.1 范例1：Result 枚举的简单使用
 
 下面的范例，我们通过打开一个不存在的文件来演示下 Result 枚举的使用
 
@@ -163,7 +163,7 @@ Err(Error { repr: Os { code: 2, message: "No such file or directory" } })
 
 上面的代码仅仅是输出错误信息，这只能是演示目的，正常情况下我们要根据结果类型作出不同的选择。
 
-### 范例 2: 捕捉错误信息并恢复程序运行
+### 21.2.2 范例 2: 捕捉错误信息并恢复程序运行
 
 下面的代码，我们使用 match 对 Result 的不同值作出不同的处理。
 
@@ -193,7 +193,7 @@ end of main
 
 > 注意: 上面的代码，不管 f 的值是什么，最后的 println!("end of main"); 都会运行。
 
-### 范例 3 ： 实战演练函数返回错误
+### 21.2.3 范例 3 ： 实战演练函数返回错误
 下面的代码，我们定义了一个函数 is_even()。如果传递的参数不是偶数则会抛出一个可恢复错误。
 
 ```
@@ -225,7 +225,7 @@ Error msg is NOT_AN_EVEN
 end of main
 ```
 
-## unwrap() 函数和 expect() 函数
+## 21.3 unwrap() 函数和 expect() 函数
 
 上面的 Result<T,E> ，用 match 语句处理起来蛮不错的样子，但写多了就会有 Go 语言那种漫天飞舞 if err != nil 的赶脚。
 
@@ -242,7 +242,7 @@ expect() 函数用于简化不希望事情失败的错误情况。而 unwrap() �
 
 > unwrap() 和 expect() 不仅能够处理 Result <T,E> 枚举，还可以用于处理 Option <T> 枚举。
 
-## unwrap() 函数
+## 21.4 unwrap() 函数
 
 unwrap() 函数返回操作成功的实际结果。如果操作失败，它会调用 panic!() 并输出默认的错误消息。
 
@@ -254,7 +254,7 @@ unwrap(self):T
 
 实际上，unwrap() 函数内部的实现就是我们上面见过的 match 语句。
 
-### 范例1
+### 21.4.1 范例1
 
 下面代码，我们使用 unwrap() 函数对判断偶数的那个范例进行改造，看起来是不是舒服多了
 
@@ -280,7 +280,7 @@ result is true
 end of main
 ```
 
-### 范例 2
+### 21.4.2 范例 2
 
 如果我们将 is_even(10) 传递的 10 改成 13 则会退出程序并输出错误消息
 
@@ -308,7 +308,7 @@ note: Run with `RUST_BACKTRACE=1` for a backtrace
 
 ```
 
-## 函数 expect()
+## 21.5 函数 expect()
 
 函数 expect() 当 self 是 Ok 或 Some 则返回包含的值。否则调用panic!() 输出自定义的错误并退出程序。
 
@@ -320,7 +320,7 @@ expect(self,msg:&str):T
 
 函数 expect() 和 unwrap() 一样，唯一的不同点是 当错误发生时，expect() 会输出自定义的错误消息而不是默认的错误消息。
 
-### 范例
+### 21.5.1 范例
 
 下面的代码，我们使用 expect() 函数改造下上面那个文件不存在的 match 范例
 

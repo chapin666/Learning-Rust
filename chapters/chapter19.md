@@ -1,4 +1,4 @@
-# Rust 模块 Modules
+# 十九、Rust 模块 Modules
 
 模块 **Module** 用于将函数或结构体按照功能分组。我们通常把相似的函数或者实现相同功能的或者共同实现一个功能的函数和结构体划分到一个模块中。
 
@@ -27,7 +27,7 @@ crate 翻译为中文是 **箱|板条** 的意思，个人觉得还不如翻译�
 
 比如交流的时候说 创建一个板条箱，估计没人能听懂
 
-## Rust 中模块的定义语法
+## 19.1 Rust 中模块的定义语法
 
 Rust 提供了 mod 关键字用于定义一个模块，定义模块的语法格式如下
 
@@ -44,7 +44,7 @@ mod module_name {
 
 module_name 必须是一个合法的标识符，它的格式和函数名称一样。
 
-### 公开的模块和公开的函数
+### 19.1.1 公开的模块和公开的函数
 
 Rust 语言默认所有的模块和模块内的函数都是私有的，也就是只能在模块内部使用。
 
@@ -85,7 +85,7 @@ Rust 语言中的模块默认是私有的。
 
 > 简直和绕口令差不多了....
 
-### 范例： 定义一个模块
+### 19.1.2 范例： 定义一个模块
 
 我们已经学习了 Rust 中模块的基本知识和定义语法，接下来我们尝试定义一个模块 movies，它包含一个单独的方法 play()。
 
@@ -109,7 +109,7 @@ fn main(){
 Playing movie Herold and Kumar
 ```
 
-## use 关键字
+## 19.2 use 关键字
 
 每次调用外部的模块中的函数或结构体都要添加 **模块限定**，这样似乎有点啰嗦了。
 
@@ -121,12 +121,12 @@ Rust 从 C++ 借鉴了 use 关键字。
 
 use 关键字用于文件头部预先引入需要用到的外部模块中的函数或结构体。
 
-### use 关键字的使用语法
+### 19.2.1 use 关键字的使用语法
 ```
 use public_module_name::function_name;
 ```
 
-### 范例
+### 19.2.2 范例
 
 有了 use 关键字，我们就可以预先引入外部模块中的函数和结构体而不用在使用时使用 **全限定模块**。
 
@@ -150,7 +150,7 @@ fn main(){
 Playing movie Herold and Kumar
 ```
 
-## 嵌套模块 / 多级模块
+## 19.3 嵌套模块 / 多级模块
 
 Rust 允许一个模块中嵌套另一个模块，换种说法，就是允许多层级模块。
 
@@ -176,7 +176,7 @@ pub mod movies {
 use movies::english::comedy::play; 
 ```
 
-### 范例
+### 19.3.1 范例
 
 下面的范例是对上面代码的补充
 
@@ -214,7 +214,7 @@ Playing comedy movie The Hangover
 Playing comedy movie Airplane!
 ```
 
-## 范例：创建一个库 crate 并编写一些用例
+## 19.4 范例：创建一个库 crate 并编写一些用例
 
 上面大篇幅我们一直都在说模块的一些用法，估计把大家绕的一头雾水了。
 
@@ -229,7 +229,7 @@ Playing comedy movie Airplane!
 
 Rust 项目一般使用 cargo 作为包管理器，我们也不例外，我们会用它来管理我们的 crate ，权当复习复习。
 
-### 第一步 - 创建 movie_lib 库 crate
+### 19.4.1 第一步 - 创建 movie_lib 库 crate
 
 在你的工作目录下创建一个项目目录叫做 movie_app，创建项目的命令如下
 
@@ -293,7 +293,7 @@ $ tree ../movie_app/
 2 directories, 3 files
 ```
 
-### 第二步 - 编辑 Cargo.toml 文件修改库 crate 的一些基本信息
+### 19.4.2 第二步 - 编辑 Cargo.toml 文件修改库 crate 的一些基本信息
 
 修改之前，我们先来看看 Cargo.toml 文件里的原内容是啥
 
@@ -327,7 +327,7 @@ edition = "2018"
 [dependencies]
 ```
 
-### 第三步 - 编辑 lib.rs 文件
+### 19.4.3 第三步 - 编辑 lib.rs 文件
 
 lib.rs 文件 用于指定 库 crate 有哪些公开的模块可用。
 
@@ -359,7 +359,7 @@ pub mod [库名字];
 pub mod movies;
 ```
 
-#### 第四步 - 编辑 movies.rs 文件
+### 19.4.4 第四步 - 编辑 movies.rs 文件
 
 我们的 movie_lib 库只有一个模块 movies，而这个模块只有一个功能，就是在 movies.rs 中放置一个函数 play() 。
 
@@ -373,7 +373,7 @@ pub fn play(name:String){
 
 因为 play() 函数需要导出给外部使用因此需要添加 pub 关键字。
 
-### 第五步 - 编译 movie_lib 库 crate
+### 19.4.5 第五步 - 编译 movie_lib 库 crate
 
 我们可以在 movie_lib 目录下使用 cargo build 命令来构建/编译项目。这个命令除了编译作用外，还会检查我们的 crate 结构是否正确。
 
@@ -385,7 +385,7 @@ $ cargo build
     Finished dev [unoptimized + debuginfo] target(s) in 0.89s
 ```
 
-### 第六步 - 创建测试应用程序
+### 19.4.6 第六步 - 创建测试应用程序
 
 在 movie_app 目录下新建一个目录 movie_lib_test。
 
@@ -415,7 +415,7 @@ $ cargo build
 
 movie_lib_test 是一个测试应用程序，它的主要作用就是测试我们刚刚写的 movie_lib。因为是一个可执行二进制项目，因此 movie_lib_test/src/main.rs 中必须包含 main() 作为入口函数。
 
-### 第七步 - 编辑 Cargo.toml 添加本地依赖
+### 19.4.7 第七步 - 编辑 Cargo.toml 添加本地依赖
 
 打开 Cargo.toml 文件并在 [dependencies] 节点下添加
 
@@ -442,7 +442,7 @@ movies_lib = { path = "../movie_lib" }
 
 ![](/images/crate.png)
 
-### 第八步 - 添加一些使用范例代码到 src/mian.rs 文件中
+### 19.4.8 第八步 - 添加一些使用范例代码到 src/mian.rs 文件中
 
 打开 src/main.rs 文件并复制粘贴一下内容
 
@@ -469,7 +469,7 @@ fn main() {
 
 > 注意 2: 请仔细阅读 use movies_lib::movies::play; 中 :: 隔开的每一部分，它的组成其实是 crate 名字 + 库名字 + 函数名/结构体名/常量名
 
-### 第九步 - 使用 cargo build 编译或使用 cargo run 运行
+### 19.4.9 第九步 - 使用 cargo build 编译或使用 cargo run 运行
 
 终于，激动人心的时刻来临了，我们可以在 movie_lib_test 目录下运行 cargo build 构建项目，当然了，如果仅仅是想看看运行结果，可以直接输入 cargo run 运行，这个命令会先执行 cargo build ，输出结果下:
 

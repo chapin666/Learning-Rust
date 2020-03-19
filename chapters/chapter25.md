@@ -1,4 +1,4 @@
-# Rust Cargo 包管理器
+# 二十五、Rust Cargo 包管理器
 
 Rust 内置了一个包管理器 **cargo**。它会随着 Rust 的安装而安装。
 
@@ -6,7 +6,7 @@ cargo 类似于 Python 中的 pip 或 Ruby 中的 RubyGems 或 Node.js 中的 NP
 
 当然了，cargo 不仅仅是一个包管理器，它还是 Rust 的项目管理利器。
 
-## 检查 cargo 是否安装和安装的版本
+## 25.1 检查 cargo 是否安装和安装的版本
 
 打开终端或命令行提示符或 Shell，输入下面的命令然后回车
 
@@ -22,7 +22,7 @@ cargo 1.35.0
 
 cargo 包管理器的版本和 Rust 语言是同步的。
 
-## cargo 的帮助信息
+## 25.2 cargo 的帮助信息
 
 如果想要查看 cargo 的帮助信息或查看 cargo 提供了哪些命令和功能，可以在 终端 中输入 cargo 或 cargo -h 然后回车
 
@@ -65,7 +65,7 @@ Some common cargo commands are (see all commands with --list):
 See 'cargo help <command>' for more information on a specific command.
 ```
 
-## cargo 提供的命令
+## 25.3 cargo 提供的命令
 
 正如上面 cargo 帮助信息中所描述的那样，如果我们想要查看 cargo 提供的所有命令，可以直接在终端里输入
 
@@ -153,7 +153,7 @@ ARGS:
     <path>  
 ```
 
-## cargo 创建 Rust 项目
+## 25.4 cargo 创建 Rust 项目
 
 作为包管理器，cargo 可以帮助我们下载第三方库。但这仅仅是 cargo 功能的冰山一角。
 
@@ -173,7 +173,7 @@ cargo new project_name --bin
 cargo new project_name --lib
 ```
 
-## 范例： 使用 cargo 创建并构建一个完整的二进制可执行程序项目
+## 25.5 范例： 使用 cargo 创建并构建一个完整的二进制可执行程序项目
 
 创建项目、安装依赖、编译项目是 cargo 作为包管理器的三个最重要的功能。
 

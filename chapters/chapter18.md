@@ -1,4 +1,4 @@
-# Rust 枚举 Enum
+# 十八、Rust 枚举 Enum
 
 长大的时候回去想想小时候，觉得有时候特么的太傻逼了，比如下面这道选择题
 
@@ -48,7 +48,7 @@ let option = ["香蕉","梨","橘子","茄子"];
 
 这个说法不恰当，但目前没想到更好的。
 
-## 枚举
+## 18.1 枚举
 
 像这种万里挑一的问题，从众多个选项中选择一个的问题，像这种众多选项，Rust 提供了一个新的数据类型用来表示它们。
 
@@ -56,7 +56,7 @@ let option = ["香蕉","梨","橘子","茄子"];
 
 也就是说，枚举 用于从众多的可变列表中选择一个。
 
-## 枚举定义
+## 18.2枚举定义
 
 Rust 语言提供了 enum 关键字用于定义枚举。
 
@@ -81,7 +81,7 @@ enum Fruits {
 }
 ```
 
-## 使用枚举
+## 18.3使用枚举
 
 枚举定义好了之后我们就要开始用它了，枚举的使用方式很简单，就是 枚举名::枚举值。语法格式如下
 
@@ -101,7 +101,7 @@ let selected = Fruits::Banana;
 let selected: Fruits = Fruits::Banana;
 ```
 
-### 范例
+### 18.3.1 范例
 
 下面的范例，演示了枚举类型的基本使用方法和案例。
 
@@ -132,7 +132,7 @@ fn main() {
 Banana
 ```
 
-## #[derive(Debug)] 注解
+## 18.4 #[derive(Debug)] 注解
 
 想必大家看到了 enum Fruits 前面的 #[derive(Debug)]。
 
@@ -223,7 +223,7 @@ warning: variant is never constructed: `Eggplant`
 variant is never constructed: Eggplant 具体是啥意思，以后有空再来 YY 吧。
 ```
 
-## 结构类型 struct 和枚举类型 enum
+## 18.5 结构类型 struct 和枚举类型 enum
 
 好了，到目前为止，我们已经学习了两个可以自定义类型的东西了，
 - 一个是 结构类型 struct
@@ -235,7 +235,7 @@ variant is never constructed: Eggplant 具体是啥意思，以后有空再来 Y
 
 如果说有那么一丁点儿关系，那就是 枚举类型 enum 可以作为结构体的成员变量的数据类型。
 
-### 范例
+### 18.5.1 范例
 
 下面的代码，我们定义了一个枚举 GenderCategory 用于表示性别，枚举值有 Male 和 Female 分别表示男和女。
 
@@ -280,7 +280,7 @@ Person { name: "零基础教程", gender: Female }
 Person { name: "Admin", gender: Male }
 ```
 
-## Option 枚举
+## 18.6 Option 枚举
 
 Rust 语言核心和标准库内置了很多枚举，其中有一个枚举我们会经常和它打交道，那就是 Option 枚举。
 
@@ -289,7 +289,7 @@ Option 枚举代表了那种 可有可无 的选项。它有两个枚举值 None
 - None 表示可有可无中的 无。
 - Some(T) 表示可有可无中的 有，既然有，那么就一定有值，也就是一定有数据类型，那个 T 就表示有值时的值数据类型。
 
-### Option 枚举的定义代码如下
+### 18.6.1 Option 枚举的定义代码如下
 
 ```
 enum Option<T> {
@@ -307,7 +307,7 @@ Option 枚举经常用在函数中作为返回值，因为它可以表示有返�
 
 如果你还不理解，那么就直接看范例吧
 
-### 范例
+### 18.6.2 范例
 
 下面的范例，我们定义了一个函数 is_even()，使用 Option 枚举作为它的返回值类型。
 
@@ -335,7 +335,7 @@ None
 Some(true)
 ```
 
-## match 语句和枚举
+## 18.7 match 语句和枚举
 
 枚举的另一个重要操作就是判断枚举值。判断一个枚举值，== 比较运算符是不起作用的。
 
@@ -378,7 +378,7 @@ fn main() {
 
 match 语句我们之间已经学过了，我们就不介绍了。我们直接上范例，看看如何使用 match 语句来判断枚举值
 
-### 范例
+### 18.7.1 范例
 
 下面的代码，我们定义了一个枚举 CarType，同时定义了一个函数 print_size() ，它接受 CarType 枚举类型的变量，并使用 match 语句来判断枚举变量的值。
 
@@ -416,7 +416,7 @@ Small sized car
 medium sized car
 ```
 
-## match 语句和 Option 类型
+## 18.8 match 语句和 Option 类型
 
 既然 match 语句可以用于比较和判断枚举变量的值，那么对于上面提到的 Option 枚举，match 语句也使用。
 
@@ -450,7 +450,7 @@ fn is_even(no:i32)->Option<bool> {
 not even
 ```
 
-## match 语句和带数据类型的枚举
+## 18.9 match 语句和带数据类型的枚举
 
 Rust 中的枚举值可以有它们自己的数据类型。这种枚举值带数据类型的语法，彻底把 match 语句和枚举推向了史无前例的高度。
 
@@ -477,7 +477,7 @@ enum GenderCategory {
 
 枚举 GenderCategory 有两个枚举值 Name 和 User_ID，它们有着不同的数据类型：String 和 i32。
 
-### 范例
+### 18.9.1 范例
 
 下面的范例，我们定义了一个带数据类型的枚举 GenderCategory。 然后演示了带数据类型枚举值的初始化和 match 语句的判断
 

@@ -1,8 +1,8 @@
-# Rust 开发环境配置
+# 二、Rust 开发环境配置
 
 Rust 语言的环境配置还是相对简单的，因为官方提供了 rustup 这个一步配置工具。rustup 是 Rust 官方推出的基于 终端/控制台/shell 的工具，可用于管理 Rust 版本和相关工具
 
-## Windows 上安装 Rust
+## 2.1 Windows 上安装 Rust
 
 Windows 上安装任何语言的开发环境都有一点复杂，Rust 也无法避免这一点：
 
@@ -49,7 +49,7 @@ C:\Users\Admin>cargo -V
 cargo 1.29.0 (524a578d7 2018-08-05)
 ```
 
-## Linux 或 Mac 上安装
+## 2.2 Linux 或 Mac 上安装
 
 Linux 或 Mac 上安装 Rust 和 rustup 真的是再简单不过了，只要打开 终端 / Shell 输入下面的命令然后按下回车键
 
